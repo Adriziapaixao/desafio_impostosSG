@@ -1,6 +1,6 @@
-package com.example.securitySG.controllers.dtos;
+package com.example.desafio_impostoSG.controllers.dtos;
 
-import com.example.securitySG.models.RoleEntity;
+import com.example.desafio_impostoSG.models.RoleEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

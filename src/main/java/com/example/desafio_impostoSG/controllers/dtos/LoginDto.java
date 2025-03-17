@@ -1,4 +1,4 @@
-package com.example.securitySG.controllers.dtos;
+package com.example.desafio_impostoSG.controllers.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

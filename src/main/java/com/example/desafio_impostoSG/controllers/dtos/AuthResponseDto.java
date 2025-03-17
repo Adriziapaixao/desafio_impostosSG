@@ -1,5 +1,6 @@
-package com.example.securitySG.controllers.dtos;
+package com.example.desafio_impostoSG.controllers.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthResponseDto {
+
     private String accessToken;
-    private String refreshToken;
 }

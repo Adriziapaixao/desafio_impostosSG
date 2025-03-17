@@ -1,8 +1,7 @@
-package com.example.securitySG.models;
+package com.example.desafio_impostoSG.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
 @Data
