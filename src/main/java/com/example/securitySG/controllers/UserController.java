@@ -30,6 +30,12 @@ public class UserController {
         return userService.createUser(registerUserDto);
     }
 
+    @PostMapping("/login")
+    public String login(@RequestBody LoginDto loginDto) {
+        return userService.login(loginDto);
+
+    }
+
     @GetMapping
     public UserResponseDto getDetails() {
         return userService.getDetails();
