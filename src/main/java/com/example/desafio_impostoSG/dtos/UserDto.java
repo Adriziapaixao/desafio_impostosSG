@@ -1,4 +1,4 @@
-package com.example.desafio_impostoSG.controllers.dtos;
+package com.example.desafio_impostoSG.dtos;
 
 import com.example.desafio_impostoSG.models.RoleEntity;
 import lombok.AllArgsConstructor;

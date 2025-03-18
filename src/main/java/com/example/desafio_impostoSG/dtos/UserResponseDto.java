@@ -1,4 +1,4 @@
-package com.example.desafio_impostoSG.controllers.dtos;
+package com.example.desafio_impostoSG.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
