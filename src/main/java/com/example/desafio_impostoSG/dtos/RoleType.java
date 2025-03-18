@@ -1,4 +1,4 @@
-package com.example.desafio_impostoSG.controllers.dtos;
+package com.example.desafio_impostoSG.dtos;
 
 public enum RoleType {
     ROLE_ADMIN,
