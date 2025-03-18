@@ -1,8 +1,8 @@
 package com.example.desafio_impostoSG.services;
 
-import com.example.desafio_impostoSG.controllers.dtos.LoginDto;
-import com.example.desafio_impostoSG.controllers.dtos.RegisterUserDto;
-import com.example.desafio_impostoSG.controllers.dtos.UserResponseDto;
+import com.example.desafio_impostoSG.dtos.LoginDto;
+import com.example.desafio_impostoSG.dtos.RegisterUserDto;
+import com.example.desafio_impostoSG.dtos.UserResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service

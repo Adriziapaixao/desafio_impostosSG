@@ -1,14 +1,16 @@
 package com.example.desafio_impostoSG.models;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@NoArgsConstructor
+
 @Data
 @Table(name = "tipos_impostos")
 @Entity
+@Builder
 public class TipoImpostoEntity {
 
     @Id

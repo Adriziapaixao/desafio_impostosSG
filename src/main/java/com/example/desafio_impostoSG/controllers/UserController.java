@@ -1,9 +1,9 @@
 package com.example.desafio_impostoSG.controllers;
 
-import com.example.desafio_impostoSG.controllers.dtos.AuthResponseDto;
-import com.example.desafio_impostoSG.controllers.dtos.LoginDto;
-import com.example.desafio_impostoSG.controllers.dtos.RegisterUserDto;
-import com.example.desafio_impostoSG.controllers.dtos.UserResponseDto;
+import com.example.desafio_impostoSG.dtos.AuthResponseDto;
+import com.example.desafio_impostoSG.dtos.LoginDto;
+import com.example.desafio_impostoSG.dtos.RegisterUserDto;
+import com.example.desafio_impostoSG.dtos.UserResponseDto;
 import com.example.desafio_impostoSG.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

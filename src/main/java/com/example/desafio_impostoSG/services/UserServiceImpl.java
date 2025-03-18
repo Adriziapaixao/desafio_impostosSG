@@ -1,9 +1,9 @@
 package com.example.desafio_impostoSG.services;
 
-import com.example.desafio_impostoSG.controllers.dtos.LoginDto;
-import com.example.desafio_impostoSG.controllers.dtos.RegisterUserDto;
-import com.example.desafio_impostoSG.controllers.dtos.RoleType;
-import com.example.desafio_impostoSG.controllers.dtos.UserResponseDto;
+import com.example.desafio_impostoSG.dtos.LoginDto;
+import com.example.desafio_impostoSG.dtos.RegisterUserDto;
+import com.example.desafio_impostoSG.dtos.RoleType;
+import com.example.desafio_impostoSG.dtos.UserResponseDto;
 import com.example.desafio_impostoSG.infra.config.JwtTokenProvider;
 import com.example.desafio_impostoSG.models.RoleEntity;
 import com.example.desafio_impostoSG.models.UserEntity;
