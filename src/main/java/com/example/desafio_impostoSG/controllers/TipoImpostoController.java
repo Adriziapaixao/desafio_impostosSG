@@ -27,19 +27,15 @@ public class TipoImpostoController {
 
 
     @GetMapping
-    public List<TipoImpostoEntity> listarTodos() {
-        return tipoImpostoService.listarTodos();
+    public List<TipoImpostoEntity> findAll() {
+        return tipoImpostoService.findAll();
     }
 
     @PostMapping
     public ResponseEntity<TipoImpostoResponse> cadastrar(@RequestBody TipoImpostoRequest tipoImpostoRequest) {
-        // Chama o serviço para cadastrar o tipo de imposto
-        ResponseEntity<TipoImpostoResponse> responseEntity = tipoImpostoService.cadastrar(tipoImpostoRequest);
 
-        // Extrai o corpo do ResponseEntity
-        TipoImpostoResponse tipoImpostoResponse = responseEntity.getBody();
+        TipoImpostoResponse tipoImpostoResponse = tipoImpostoService.cadastrar(tipoImpostoRequest).getBody();
 
-        // Retorna o ResponseEntity diretamente, já que ele já está formatado corretamente
         return ResponseEntity.status(HttpStatus.CREATED).body(tipoImpostoResponse);
     }
 

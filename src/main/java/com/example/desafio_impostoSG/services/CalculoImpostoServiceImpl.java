@@ -16,12 +16,17 @@ public class CalculoImpostoServiceImpl implements CalculoImpostoService{
     @Override
     public CalculoImpostoResponseDto calcularImpostoDetalhado(Long tipoImpostoId, double valorBase) {
 
-        String tipoImposto = "ICMS";
-        double aliquota = 0.18;
+        // Busca o tipo de imposto no repositório
+        TipoImpostoEntity tipoImpostoEntity = tipoImpostoRepository.findById(tipoImpostoId)
+                .orElseThrow(() -> new RuntimeException("Tipo de imposto não encontrado"));
+
+        // Obtém a alíquota do tipo de imposto
+        double aliquota = tipoImpostoEntity.getRate();
         double valorImposto = valorBase * aliquota;
 
+        // Retorna o objeto do tipo CalculoImpostoResponseDto
         return CalculoImpostoResponseDto.builder()
-                .tipoImposto(tipoImposto)
+                .tipoImposto(tipoImpostoEntity.getName()) // Nome do imposto
                 .valorBase(valorBase)
                 .aliquota(aliquota)
                 .valorImposto(valorImposto)

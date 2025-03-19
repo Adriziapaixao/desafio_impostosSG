@@ -41,13 +41,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> {
 
                     authorize.requestMatchers("/auth/refresh-token").permitAll();
-                    authorize.requestMatchers(HttpMethod.GET, "/tipos").permitAll();
-                    authorize.requestMatchers(HttpMethod.GET, "/tipos/{id}").permitAll();
-                    authorize.requestMatchers(HttpMethod.DELETE, "/tipos/{id}").permitAll();
-                    authorize.requestMatchers(HttpMethod.POST, "/tipos").permitAll();
-                    authorize.requestMatchers(HttpMethod.POST, "/calculo").permitAll();
-                    authorize.requestMatchers(HttpMethod.POST,"/users/user/register").permitAll();
-                    authorize.requestMatchers(HttpMethod.POST, "/users/user/login").permitAll();
+                    authorize.requestMatchers(HttpMethod.GET, "/tipos", "/tipos/{id}").permitAll();
+                    authorize.requestMatchers(HttpMethod.DELETE, "/tipos/{id}").hasRole("ADMIN");
+                    authorize.requestMatchers(HttpMethod.POST, "/tipos", "/calculo").hasRole("ADMIN");
+                    authorize.requestMatchers(HttpMethod.POST,"/users/user/register", "/users/user/login").permitAll();
                     authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
 
                     authorize.anyRequest().authenticated();

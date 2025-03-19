@@ -11,12 +11,13 @@ import java.util.List;
 
 @Service
 public interface TipoImpostoService {
-    
-    List<TipoImpostoEntity> listarTodos();
+
 
     ResponseEntity<TipoImpostoResponse> cadastrar(TipoImpostoRequest tipoImpostoRequest);
 
     TipoImpostoResponse findById(Long id);
 
     void deleteById(Long id);
+
+    List<TipoImpostoEntity> findAll();
 }

@@ -25,18 +25,13 @@ public class TipoImpostoServiceImpl implements TipoImpostoService{
         this.tipoImpostoRepository = tipoImpostoRepository;
     }
 
-
-    @Override
-    public List<TipoImpostoEntity> listarTodos() {
-        return tipoImpostoRepository.findAll();
-    }
-
     @Override
     public ResponseEntity<TipoImpostoResponse> cadastrar(TipoImpostoRequest tipoImpostoRequest) {
         // Converte o DTO de requisição para a entidade
         TipoImpostoEntity tipoImpostoEntity = TipoImpostoEntity.builder()
                 .name(tipoImpostoRequest.getName())
                 .description(tipoImpostoRequest.getDescription())
+                .rate(tipoImpostoRequest.getRate())
                 .build();
 
         // Salva a entidade no banco de dados
@@ -47,6 +42,7 @@ public class TipoImpostoServiceImpl implements TipoImpostoService{
                 .id(savedEntity.getId())
                 .name(savedEntity.getName())
                 .description(savedEntity.getDescription())
+                .rate(savedEntity.getRate())
                 .build();
 
         // Retorna o DTO de resposta
@@ -58,7 +54,7 @@ public class TipoImpostoServiceImpl implements TipoImpostoService{
         return tipoImpostoRepository.findAllById(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public void deleteById(Long id) {
 
@@ -69,6 +65,11 @@ public class TipoImpostoServiceImpl implements TipoImpostoService{
         // Exclui o tipo de imposto pelo ID
         tipoImpostoRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<TipoImpostoEntity> findAll() {
+        return tipoImpostoRepository.findAll();
     }
 
 
