@@ -1,7 +1,6 @@
 package com.example.desafio_impostoSG.infra.config;
 
-import com.example.desafio_impostoSG.models.RoleEntity;
-import com.example.desafio_impostoSG.models.UserEntity;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -42,7 +41,6 @@ public class JwtTokenProvider {
                 .issuedAt(new Date())
                 .expiration(expireDate)
                 .claim("roles", authorities)
-                .claim("department", setDepartment(authorities))
                 .signWith(SignatureAlgorithm.HS256, key())
                 .compact();
 
@@ -73,17 +71,6 @@ public class JwtTokenProvider {
 
     }
 
-    private String setDepartment(String roles) {
-        return roles.contains("ADMIN") ? "IT" : "FINANCE";
-    }
-
-    public Claims getClaimsFromToken(String token) {
-            return Jwts.parser()
-                    .verifyWith((SecretKey) key())
-                    .build()
-                    .parseSignedClaims(token)
-                    .getPayload();
-    }
 
     public UsernamePasswordAuthenticationToken getAuthentication(String token) {
         Claims claims = Jwts.parser()
