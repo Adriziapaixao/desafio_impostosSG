@@ -1,13 +1,13 @@
 package com.example.desafio_impostoSG.controllers;
 
 import com.example.desafio_impostoSG.dtos.CalculoImpostoRequest;
-import com.example.desafio_impostoSG.dtos.TipoImpostoRequest;
 import com.example.desafio_impostoSG.dtos.CalculoImpostoResponseDto;
 import com.example.desafio_impostoSG.services.CalculoImpostoService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculoImpostoController {
 
     @Autowired
-    private CalculoImpostoService calculoImpostoService;
+    private final CalculoImpostoService calculoImpostoService;
 
     @PostMapping
-    public ResponseEntity<CalculoImpostoResponseDto> calcularImposto(@RequestBody CalculoImpostoRequest request) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> calcularImposto(@Valid @RequestBody CalculoImpostoRequest request) {
+        if (request.getValorBase() == null) {
+            return ResponseEntity.badRequest().body("O campo 'valorBase' não pode ser nulo.");
+        }
+
         CalculoImpostoResponseDto response = calculoImpostoService
                 .calcularImpostoDetalhado(request.getTipoImpostoId(), request.getValorBase());
         return ResponseEntity.ok(response);

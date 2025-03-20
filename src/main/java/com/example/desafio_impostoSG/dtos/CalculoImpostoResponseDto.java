@@ -13,6 +13,6 @@ public class CalculoImpostoResponseDto {
 
     private String tipoImposto;
     private double valorBase;
-    private double aliquota;
+    private double rate;
     private double valorImposto;
 }
