@@ -1,6 +1,6 @@
 package com.example.desafio_impostoSG.services;
 
-import aj.org.objectweb.asm.commons.Remapper;
+
 import com.example.desafio_impostoSG.dtos.TipoImpostoRequest;
 import com.example.desafio_impostoSG.dtos.TipoImpostoResponse;
 import com.example.desafio_impostoSG.models.TipoImpostoEntity;
@@ -19,5 +19,5 @@ public interface TipoImpostoService {
 
     void deleteById(Long id);
 
-    List<TipoImpostoEntity> findAll();
+    List<TipoImpostoEntity> listarTodosTipoImposto();
 }

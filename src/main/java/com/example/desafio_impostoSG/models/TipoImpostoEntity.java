@@ -1,16 +1,18 @@
 package com.example.desafio_impostoSG.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 
 @Data
 @Table(name = "tipos_impostos")
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TipoImpostoEntity {
 
     @Id
@@ -25,4 +27,5 @@ public class TipoImpostoEntity {
 
     @Column(nullable = false)
     private Double rate;
+
 }

@@ -1,6 +1,6 @@
 package com.example.desafio_impostoSG.services;
 
-import aj.org.objectweb.asm.commons.Remapper;
+
 import com.example.desafio_impostoSG.dtos.TipoImpostoRequest;
 import com.example.desafio_impostoSG.dtos.TipoImpostoResponse;
 import com.example.desafio_impostoSG.models.TipoImpostoEntity;
@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+
 
 
 import java.util.List;
@@ -51,7 +52,16 @@ public class TipoImpostoServiceImpl implements TipoImpostoService{
 
     @Override
     public TipoImpostoResponse findById(Long id) {
-        return tipoImpostoRepository.findAllById(id);
+        TipoImpostoEntity tipoImpostoEntity = tipoImpostoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Tipo de imposto não encontrado com o ID: " + id));
+
+        // Converte a entidade para o DTO de resposta
+        return new TipoImpostoResponse(
+                tipoImpostoEntity.getId(),
+                tipoImpostoEntity.getName(),
+                tipoImpostoEntity.getDescription(),
+                tipoImpostoEntity.getRate()
+        );
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -61,16 +71,14 @@ public class TipoImpostoServiceImpl implements TipoImpostoService{
         if (!tipoImpostoRepository.existsById(id)) {
             throw new EntityNotFoundException("Tipo de imposto com ID " + id + " não encontrado.");
         }
-
-        // Exclui o tipo de imposto pelo ID
         tipoImpostoRepository.deleteById(id);
-
     }
 
     @Override
-    public List<TipoImpostoEntity> findAll() {
+    public List<TipoImpostoEntity> listarTodosTipoImposto() {
         return tipoImpostoRepository.findAll();
     }
+
 
 
 }
