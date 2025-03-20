@@ -70,7 +70,6 @@ public class UserServiceImpl implements UserService {
         return userResponseDto;
     }
 
-
     public String login(LoginDto loginDto) {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -83,7 +82,6 @@ public class UserServiceImpl implements UserService {
         return jwtTokenProvider.generateToken(authentication);
 
     }
-
 
     private String authenticateUser() {
         // Obtém o objeto Authentication do contexto de segurança

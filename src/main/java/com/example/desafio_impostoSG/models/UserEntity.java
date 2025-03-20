@@ -21,10 +21,6 @@ public class UserEntity {
     @JoinColumn(name = "role_id")
     private RoleEntity role;
 
-
-    public UserEntity(String username) {
-    }
-
 }
 
 

@@ -39,7 +39,6 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> {
 
-                    authorize.requestMatchers("/auth/refresh-token").permitAll();
                     authorize.requestMatchers(HttpMethod.GET, "/tipos", "/tipos/{id}").permitAll();
                     authorize.requestMatchers(HttpMethod.DELETE, "/tipos/{id}").hasRole("ADMIN");
                     authorize.requestMatchers(HttpMethod.POST, "/tipos", "/calculo").hasRole("ADMIN");
