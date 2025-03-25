@@ -30,6 +30,10 @@ class CalculoImpostoServiceImplTest {
     @InjectMocks
     CalculoImpostoServiceImpl calculoImpostoService;
 
+    /*
+     * given_método_when_cenário_then_retornoEsperado
+     */
+
     @Test
     void given_valorBase_whenValorBaseMenorIgualaZero_thenLancaIllegalArgumentException()  {
 

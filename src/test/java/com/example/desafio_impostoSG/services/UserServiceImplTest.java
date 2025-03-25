@@ -21,7 +21,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Optional;
 
 import static com.example.desafio_impostoSG.dtos.RoleType.ROLE_ADMIN;
 import static org.mockito.ArgumentMatchers.any;
@@ -74,7 +73,7 @@ class UserServiceImplTest {
 
     @Test
     void givenExistingUsername_whenCreateUser_thenThrowException() {
-        // Arrange
+
         RegisterUserDto registerUserDto = new RegisterUserDto();
         registerUserDto.setUsername("existingUser");
         registerUserDto.setPassword("password123");
@@ -82,7 +81,7 @@ class UserServiceImplTest {
 
         when(userRepository.existsByUsername("existingUser")).thenReturn(true);
 
-        // Act & Assert
+
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             userService.createUser(registerUserDto);
         });
