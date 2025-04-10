@@ -150,6 +150,41 @@ Siga os passos abaixo para rodar os testes com o JUnit:
 
     mvn test
 
+
+📦 Containers Utilizados
+
+Este projeto utiliza containers Docker para facilitar a configuração e execução do ambiente. Abaixo estão os detalhes dos containers utilizados:
+
+. **PostgreSQL**
+- **Imagem**: `postgres:latest`
+- **Porta**: `5432`
+- **Descrição**: Banco de dados relacional utilizado para armazenar os dados da aplicação.
+- **Configurações**:
+    - `POSTGRES_USER`: `postgres`
+    - `POSTGRES_PASSWORD`: `postgres`
+    - `POSTGRES_DB`: `imposto`
+
+. **Aplicação Java**
+- **Imagem Base**: `openjdk:17-jdk-slim`
+- **Porta**: `8080`
+- **Descrição**: Container responsável por executar a aplicação Spring Boot.
+- **Configurações**:
+    - Maven 3.8.8 instalado no container.
+    - Dependências gerenciadas pelo Maven.
+    - Variáveis de ambiente configuradas para conexão com o banco de dados:
+        - `SPRING_DATASOURCE_URL`: `jdbc:postgresql://db:5432/imposto`
+        - `SPRING_DATASOURCE_USERNAME`: `postgres`
+        - `SPRING_DATASOURCE_PASSWORD`: `postgres`
+        - `SPRING_JPA_HIBERNATE_DDL_AUTO`: `update`
+
+### Como Executar os Containers
+
+Certifique-se de que o Docker e o Docker Compose estão instalados na sua máquina. Para iniciar os containers, execute o seguinte comando:
+
+```bash
+docker-compose up -d
+```
+
 ## **Contribuição** 🤝
 
 Contribuições são super bem-vindas! 🎉
